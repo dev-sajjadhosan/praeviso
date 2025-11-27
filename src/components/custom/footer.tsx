@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <>
       <footer className="w-11/12 h-fit p-11 flex flex-col gap-9 bg-secondary/55 border rounded-xl my-36">
-        <div className="flex items-start justify-between w-full">
+        <div className="flex flex-col gap-5 md:flex-row items-start justify-between w-full">
           <div className="flex flex-col">
             <Avatar className="w-12 h-12">
               <AvatarImage src="/vite.svg" />
@@ -97,9 +97,9 @@ export default function Footer() {
           </div>
         </div>
         <Separator />
-        <div className="flex items-center justify-between w-full">
+        <div className="flex flex-col gap-5 md:flex-row items-center justify-between w-full">
           <div className="flex flex-col gap-1">
-            <p className="text-md">Want to get updates news ?</p>
+            <p className="text-lg text-muted-foreground text-center">Want to get updates news ?</p>
             <div className="flex items-center bg-secondary rounded-full px-5 py-2 w-sm">
               <Input
                 placeholder="jhonDeo@gmail.com"

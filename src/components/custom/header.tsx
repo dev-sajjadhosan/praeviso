@@ -2,6 +2,7 @@ import { ChevronFirst, Gem, Search, Sun } from "lucide-react";
 import TooltipBtn from "./tooltip-button";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
 
 const navItems = [
   {
@@ -56,11 +57,11 @@ export default function Header() {
     <>
       <header
         className={`sticky top-7 flex items-center justify-between ${
-          !isPath("/") ? "w-6/12" : "w-8/12"
+          !isPath("/") ? "md:w-6/12" : " md:w-8/12"
         }  h-14 bg-muted/55 rounded-full mx-auto border px-9 duration-300 transition-all`}
       >
         {!isPath("/") ? (
-          <Button  variant={"ghost"} onClick={() => nav(-1)}>
+          <Button variant={"ghost"} onClick={() => nav(-1)}>
             <ChevronFirst /> Go Back
           </Button>
         ) : (
@@ -72,11 +73,13 @@ export default function Header() {
 
         {!isPath("/") ? (
           <nav>
-            <h3 className="text-xl">About Page</h3>
+            <h3 className="px-5 tracking-wide font-normal">
+              About Page
+            </h3>
           </nav>
         ) : (
           <nav>
-            <ul className="flex items-center gap-5">
+            <ul className="hidden md:flex items-center gap-5">
               {navItems.map((l, i) => (
                 <Link to={l?.path} key={i}>
                   <li
