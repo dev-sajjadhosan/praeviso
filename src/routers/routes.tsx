@@ -2,6 +2,7 @@ import RootLayout from "@/layouts/root-layout";
 import AboutPage from "@/pages/about/about";
 import HomePage from "@/pages/home/home";
 import NotFoundPage from "@/pages/not-found/not-found";
+import TemplatesPage from "@/pages/templates/templates";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 const routes = createBrowserRouter([
@@ -13,6 +14,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/templates",
+        element: <TemplatesPage />,
       },
       {
         path: "/about",

@@ -2,7 +2,6 @@ import { ChevronFirst, Gem, Search, Sun } from "lucide-react";
 import TooltipBtn from "./tooltip-button";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
 
 const navItems = [
   {
@@ -51,14 +50,16 @@ const navItems = [
 ];
 
 export default function Header() {
-  const isPath = (path: string) => useLocation().pathname === path;
+  const location = useLocation();
+  const isPath = (path: string) => location.pathname === path;
   const nav = useNavigate();
+  console.log(location.pathname.replace("/", ""));
   return (
     <>
       <header
         className={`sticky top-7 flex items-center justify-between ${
           !isPath("/") ? "md:w-6/12" : " md:w-8/12"
-        }  h-14 bg-muted/55 rounded-full mx-auto border px-9 duration-300 transition-all`}
+        }  h-14 bg-secondary/65 rounded-full mx-auto border px-9 duration-300 transition-all backdrop-blur-xl`}
       >
         {!isPath("/") ? (
           <Button variant={"ghost"} onClick={() => nav(-1)}>
@@ -73,8 +74,8 @@ export default function Header() {
 
         {!isPath("/") ? (
           <nav>
-            <h3 className="px-5 tracking-wide font-normal">
-              About Page
+            <h3 className="px-5 tracking-wide font-normal capitalize">
+              {location.pathname.replace("/", "")} Page
             </h3>
           </nav>
         ) : (

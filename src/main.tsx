@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import RoutesComponent from "./routerProvider/routes";
+import RoutesComponent from "./routers/routes";
 import { ThemeProvider } from "./components/custom/theme-provider";
 import { Toaster } from "./components/ui/sonner";
 import "./index.css";
