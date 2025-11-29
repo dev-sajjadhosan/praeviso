@@ -1,13 +1,17 @@
+import DevCard from "@/components/custom/dev-card";
 import Footer from "@/components/custom/footer";
 import TooltipBtn from "@/components/custom/tooltip-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useStore } from "@/store/useStore";
 
 import {
   AtSign,
   BellRing,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   File,
   FileText,
   MailCheck,
@@ -50,7 +54,23 @@ const whatDoes = [
   },
 ];
 
+const categoryTabs = [
+  {
+    label: "resume",
+    icon: File,
+  },
+  {
+    label: "email",
+    icon: AtSign,
+  },
+  {
+    label: "cover_letter",
+    icon: Paperclip,
+  },
+];
+
 export default function HomePage() {
+  const { categoryTab, setCategoryTabs } = useStore();
   return (
     <>
       {/* <Header /> */}
@@ -260,19 +280,26 @@ export default function HomePage() {
           <div className="flex flex-col items-center gap-5">
             <h3 className="text-4xl">Use Praeviso To</h3>
             <div className="flex items-center justify-center gap-3 bg-secondary/55 px-5 py-4 rounded-2xl">
-              <Button className="px-11" variant={"secondary"}>
-                <File /> Resume
-              </Button>
-              <Button className="px-11" variant={"ghost"}>
-                <AtSign /> Email
-              </Button>
-              <Button className="px-11" variant={"ghost"}>
-                <Paperclip /> Cover Letter
-              </Button>
+              {categoryTabs.map((b, i) => (
+                <Button
+                  key={i}
+                  className={`px-11 capitalize ${
+                    categoryTab === b.label ? "" : "text-muted-foreground"
+                  }`}
+                  variant={categoryTab === b.label ? "secondary" : "ghost"}
+                  onClick={() => setCategoryTabs(b.label)}
+                >
+                  {b.icon && <b.icon />} {b?.label?.replace("_", " ")}
+                </Button>
+              ))}
             </div>
           </div>
           <div className="mt-9 bg-secondary/55 border flex items-center justify-center w-full h-140 rounded-2xl">
-            <TooltipBtn icon={Play} label="Play" variant="default" />
+            <div className="flex items-center gap-5">
+              <TooltipBtn icon={ChevronLeft} label="Prev" variant="ghost" />
+              <TooltipBtn icon={Play} label="Play" variant="default" />
+              <TooltipBtn icon={ChevronRight} label="Next" variant="ghost" />
+            </div>
           </div>
         </section>
         {/* ---------------------------------- */}
@@ -301,16 +328,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        {/* <Card className="w-xl p-10 mt-28">
-          <CardContent className="p-0 flex flex-col items-center justify-center">
-            <Construction size={55} />
-            <h3 className="text-xl">We are now working on it.</h3>
-            <p className="text-md mb-3">Please come back later.</p>
-            <Button>
-              <AtSign /> Notify via G-mail
-            </Button>
-          </CardContent>
-        </Card> */}
+        <DevCard />
         <Footer />
       </div>
     </>

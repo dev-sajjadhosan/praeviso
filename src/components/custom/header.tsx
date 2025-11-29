@@ -4,6 +4,7 @@ import {
   ChevronsRightLeft,
   Gem,
   House,
+  Moon,
   Search,
   Sun,
 } from "lucide-react";
@@ -25,6 +26,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
+import { useStore } from "@/store/useStore";
 
 const navItems = [
   {
@@ -73,6 +75,7 @@ const navItems = [
 ];
 
 export default function Header() {
+  const { theme, setTheme } = useStore();
   const location = useLocation();
   const isPath = (path: string) => location.pathname === path;
   const getIcon = (path: string) => {
@@ -151,7 +154,11 @@ export default function Header() {
         )}
 
         <div className="flex items-center gap-2">
-          <TooltipBtn icon={Sun} label="Light" />
+          <TooltipBtn
+            icon={theme === "dark" ? Sun : Moon}
+            label={theme === "dark" ? "Light" : "Dark"}
+            action={() => setTheme(theme === "dark" ? "light" : "dark")}
+          />
           <TooltipBtn icon={Search} label="Search Teamplate" />
           <TooltipBtn icon={Gem} label="What's new" />
         </div>
