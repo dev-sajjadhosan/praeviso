@@ -1,4 +1,10 @@
 import TooltipBtn from "@/components/custom/tooltip-button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,7 +40,7 @@ export default function AboutPage() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
             nulla asperiores illum quidem dolores quod.
           </h3>
-          <div className="absolute bottom-4 right-5">
+          <div className="absolute bottom-4 right-5 flex items-center gap-2">
             <TooltipBtn icon={FaFacebook} label="Facebook" />
             <TooltipBtn icon={FaInstagram} label="Instagrame" />
             <TooltipBtn icon={FaXTwitter} label="X" />
@@ -70,32 +76,31 @@ export default function AboutPage() {
             exercitationem deleniti perferendis odio repellendus veritatis optio
             aspernatur. Lorem ipsum.
           </p>
-          <ul className="list-disc list-inside mt-3 space-y-2 text-sm text-muted-foreground">
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, dolore!
-            </li>
-          </ul>
+          {/* --------------->|_|<-------------- */}
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full bg-secondary/65 px-9 py-5 rounded-2xl mt-5"
+            defaultValue="item-1"
+          >
+            {Array.from({ length: 5 }).map((_, i) => (
+              <AccordionItem value={`item-${i}`}>
+                <AccordionTrigger>{i + 1}. Product Information</AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-4 text-balance">
+                  <p>
+                    Our flagship product combines cutting-edge technology with
+                    sleek design. Built with premium materials, it offers
+                    unparalleled performance and reliability.
+                  </p>
+                  <p>
+                    Key features include advanced processing capabilities, and
+                    an intuitive user interface designed for both beginners and
+                    experts.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
           <h3 className="text-3xl font-semibold my-24 mb-5 text-center">
             Has Suggestion for us?
           </h3>
