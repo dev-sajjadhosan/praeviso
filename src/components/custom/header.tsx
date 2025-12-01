@@ -84,7 +84,6 @@ export default function Header() {
   };
 
   const nav = useNavigate();
-  console.log(location.pathname.replace("/", ""));
   return (
     <>
       <header

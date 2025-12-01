@@ -1,5 +1,6 @@
 import RootLayout from "@/layouts/root-layout";
 import AboutPage from "@/pages/about/about";
+import ComparePage from "@/pages/compare/compare";
 import HomePage from "@/pages/home/home";
 import NotFoundPage from "@/pages/not-found/not-found";
 import TemplatesPage from "@/pages/templates/templates";
@@ -18,6 +19,10 @@ const routes = createBrowserRouter([
       {
         path: "/templates",
         element: <TemplatesPage />,
+      },
+      {
+        path: "/compare",
+        element: <ComparePage />,
       },
       {
         path: "/about",

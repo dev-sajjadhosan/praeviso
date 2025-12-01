@@ -1,21 +1,21 @@
 import DevCard from "@/components/custom/dev-card";
 import Footer from "@/components/custom/footer";
+import TabBar from "@/components/custom/tab-bar";
 import TooltipBtn from "@/components/custom/tooltip-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useStore } from "@/store/useStore";
+
 
 import {
-  AtSign,
-  BellRing,
+ BellRing,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  File,
+
   FileText,
   MailCheck,
-  Paperclip,
+
   Play,
   PlayCircle,
   ScanLine,
@@ -54,23 +54,7 @@ const whatDoes = [
   },
 ];
 
-const categoryTabs = [
-  {
-    label: "resume",
-    icon: File,
-  },
-  {
-    label: "email",
-    icon: AtSign,
-  },
-  {
-    label: "cover_letter",
-    icon: Paperclip,
-  },
-];
-
 export default function HomePage() {
-  const { categoryTab, setCategoryTabs } = useStore();
   return (
     <>
       {/* <Header /> */}
@@ -279,20 +263,7 @@ export default function HomePage() {
         <section className="w-full mt-36 max-w-11/12 mx-auto">
           <div className="flex flex-col items-center gap-5">
             <h3 className="text-4xl">Use Praeviso To</h3>
-            <div className="flex items-center justify-center gap-3 bg-secondary/55 px-5 py-4 rounded-2xl">
-              {categoryTabs.map((b, i) => (
-                <Button
-                  key={i}
-                  className={`px-11 capitalize ${
-                    categoryTab === b.label ? "" : "text-muted-foreground"
-                  }`}
-                  variant={categoryTab === b.label ? "secondary" : "ghost"}
-                  onClick={() => setCategoryTabs(b.label)}
-                >
-                  {b.icon && <b.icon />} {b?.label?.replace("_", " ")}
-                </Button>
-              ))}
-            </div>
+            <TabBar />
           </div>
           <div className="mt-9 bg-secondary/55 border flex items-center justify-center w-full h-140 rounded-2xl">
             <div className="flex items-center gap-5">
