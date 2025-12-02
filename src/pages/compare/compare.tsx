@@ -2,6 +2,7 @@ import Footer from "@/components/custom/footer";
 import TabBar from "@/components/custom/tab-bar";
 import { Button } from "@/components/ui/button";
 import { BringToFront, Download } from "lucide-react";
+import ResumeEvaluationSection from "./components/compare-result";
 
 export default function ComparePage() {
   return (
@@ -31,6 +32,7 @@ export default function ComparePage() {
             Compare Your Resume
           </Button>
         </div>
+       <ResumeEvaluationSection/>
       </div>
       <Footer />
     </>
